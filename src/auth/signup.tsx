@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "../interface/navbar.tsx";
+import { API_BASE_URL } from "../config/base.tsx";
 
 interface SignupResponse {
   message: string;
@@ -38,7 +39,7 @@ const CreateLoginComponent = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/auth/register/", {
+      const response = await fetch(`${API_BASE_URL}/auth/register/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

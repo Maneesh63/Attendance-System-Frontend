@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Navbar  from "../interface/navbar";
+import { API_BASE_URL } from "../config/base.tsx";
 
 interface UserData {
   username: string;
@@ -16,7 +17,7 @@ const Dashboard = () => {
     const fetchUserData = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/auth/dashboard/",
+          `${API_BASE_URL}/auth/dashboard/`,
           {
             method: "GET",
             headers: {

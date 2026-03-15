@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "../interface/navbar"; 
+import { API_BASE_URL } from "../config/base.tsx";
 
 const AttendanceScanner = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const AttendanceScanner = () => {
           const token = localStorage.getItem("token");
           console.log("Using token:", token);
           const response = await fetch(
-            "http://127.0.0.1:8000/attendance/mark-attendance/",
+            `${API_BASE_URL}/attendance/mark-attendance/`,
             {
               method: "POST",
               headers: {

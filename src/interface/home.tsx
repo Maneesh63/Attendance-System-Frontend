@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import AttendanceScanner from "../erm/attendance.tsx";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config/base.tsx";
 
 interface Course {
   id: number;
@@ -22,7 +23,7 @@ function Home() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/erp/courses/");
+        const response = await fetch(`${API_BASE_URL}/erp/courses/`);
         const data = await response.json();
         setCourses(data.courses);
       } catch (error) {
@@ -38,7 +39,7 @@ function Home() {
    const downloadQr = async () => {
     try{
       const token = localStorage.getItem("token");
-      const response = await fetch("http://127.0.0.1:8000/attendance/create-attendance/",{
+      const response = await fetch(`${API_BASE_URL}/attendance/create-attendance/`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

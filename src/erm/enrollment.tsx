@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from '../interface/navbar.tsx';
 // import Footer from "./footer.tsx";
+import { API_BASE_URL } from "../config/base.tsx";
 
 interface Course {
   id: number;
@@ -47,8 +48,7 @@ const EnrollmentMain = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        "http://127.0.0.1:8000/erp/courses/",
+      const response = await fetch(`${API_BASE_URL}/erp/courses/`,
         {
           method: "GET",
           headers: {
@@ -79,7 +79,7 @@ const EnrollmentMain = () => {
         try {
             const token = localStorage.getItem("token");
             const response = await fetch(
-               "http://127.0.0.1:8000/erp/enroll-student/",
+                `${API_BASE_URL}/erp/enroll-student/`,
                {
                 method: "POST",
                 headers: {
