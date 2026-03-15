@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../config/base.tsx";
  
 interface Course {
   id: number;
@@ -14,7 +15,7 @@ function CourseList() {
     
     const fetchCourses = async () => {
         try {
-            const response  = await fetch("http://127.0.0.1:8000/erp/courses/")
+            const response  = await fetch(`${API_BASE_URL}/erp/courses/`)
             const data = await response.json();
             setCourses(data.courses);
             console.log("Courses:", data.courses);
@@ -44,3 +45,4 @@ function CourseList() {
 }
 
 export default CourseList;
+ 
