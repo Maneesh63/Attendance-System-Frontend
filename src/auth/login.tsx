@@ -47,6 +47,7 @@ const CreateLoginComponent = () => {
 
       if (response.ok) {
         localStorage.setItem("token", result.token);
+        localStorage.setItem("role", result.role);
         toast.success(result.message || "Login successful");
         navigate("/");
       } else {

@@ -251,7 +251,7 @@ const EnrollmentMain = () => {
         </div>
       </div>
 
-      {/* ================= SUBMIT ================= */}
+      
       <div className="pt-10">
         <button
           type="submit"

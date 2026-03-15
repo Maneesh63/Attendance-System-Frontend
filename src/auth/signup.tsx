@@ -19,12 +19,13 @@ const CreateLoginComponent = () => {
     password: "",
     username: "",
     phone: "",
+    role: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -49,6 +50,7 @@ const CreateLoginComponent = () => {
 
       if (response.ok) {
         localStorage.setItem("token", result.token);
+        localStorage.setItem("role", result.role);
         toast.success(result.message || "Signup successful");
         navigate("/");
       } 
@@ -126,6 +128,16 @@ const CreateLoginComponent = () => {
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
+            </div>
+            
+            <div>
+              <label className="text-sm font-medium mb-1">
+                 Role
+              </label>
+            <select name="role" onChange={handleOnChange} value={formData.role}>
+              <option value="student">Student</option>
+             <option value="teacher">Teacher</option>
+            </select>
             </div>
 
             {error && (
