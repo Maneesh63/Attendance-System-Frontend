@@ -2,9 +2,9 @@ import Navbar from "./navbar.tsx";
 import Footer from "./footer.tsx";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import AttendanceScanner from "../erm/attendance.tsx";
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../config/base.tsx";
+
 
 interface Course {
   id: number;
@@ -21,6 +21,8 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("API URL direct:", import.meta.env.VITE_API_URL);
+    console.log("API URL from config:", API_BASE_URL);
     const fetchCourses = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/erp/courses/`);
