@@ -3,12 +3,21 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
+# accept build argument
+ARG VITE_API_URL
+
+# expose it to Vite
+ENV VITE_API_URL=$VITE_API_URL
+
 COPY package*.json ./
 RUN npm install
 
 COPY . .
 
+RUN echo "API URL: $VITE_API_URL"
+
 RUN npm run build
+
 
 # Production stage
 FROM nginx:alpine
