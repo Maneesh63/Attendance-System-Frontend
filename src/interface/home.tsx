@@ -23,8 +23,11 @@ function Home() {
   useEffect(() => {
     console.log("API URL direct:", import.meta.env.VITE_API_URL);
     console.log("API URL from config:", API_BASE_URL);
+    console.log("ENV OBJECT:", import.meta.env);
     const fetchCourses = async () => {
       try {
+        console.log("API URL direct:", import.meta.env.VITE_API_URL);
+        console.log("ENV OBJECT:", import.meta.env);
         const response = await fetch(`${API_BASE_URL}/erp/courses/`);
         const data = await response.json();
         setCourses(data.courses);
