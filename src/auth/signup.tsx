@@ -53,7 +53,7 @@ const CreateLoginComponent = () => {
         localStorage.setItem("token", result.token);
         localStorage.setItem("role", result.role);
 
-        await fetch("http://127.0.0.1:8000/attendance/create-attendance/", {
+        await fetch(`${API_BASE_URL}/attendance/create-attendance/`, {
             method: "POST",
             headers: {
               Authorization: `Bearer ${result.token}`
