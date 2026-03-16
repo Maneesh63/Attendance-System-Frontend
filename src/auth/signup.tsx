@@ -52,6 +52,13 @@ const CreateLoginComponent = () => {
       if (response.ok) {
         localStorage.setItem("token", result.token);
         localStorage.setItem("role", result.role);
+
+        await fetch("http://127.0.0.1:8000/attendance/create-attendance/", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${result.token}`
+            }
+          });
         toast.success(result.message || "Signup successful");
         navigate("/");
       } 

@@ -8,6 +8,7 @@ interface UserData {
   email: string;
   role: string;
   message?: string;
+  qr_code_url?: string;
 }
 
 const Dashboard = () => {
@@ -57,6 +58,15 @@ const Dashboard = () => {
          <h2>Name: {userData ? userData.username : "User"}</h2>
           <h2>Email: {userData.email}</h2>
           <h2>Role: {userData.role}</h2>
+          <h2>
+              QR-Code: 
+              <a href={userData.qr_code_url} target="_blank" rel="noopener noreferrer">
+              View QR
+              </a>
+            </h2>
+          {userData.qr_code_url && (
+            <img src={userData.qr_code_url} alt="QR Code" />
+          )}
         </>
       )}
     </div>
